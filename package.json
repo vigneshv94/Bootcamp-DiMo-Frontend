@@ -10,7 +10,7 @@
     "heroku-postbuild": "ng build --prod",
     "post-install": "ng build --aot -prod",
     "start": "node server.js",
-    "postinstall": "ng build --aot -prod",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
