@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "heroku-postbuild": "ng build --prod",
     "post-install": "ng build --aot -prod",
-    "start": "node server.js"
+    "start": "node src/main.js"
   },
   "private": true,
   "dependencies": {
