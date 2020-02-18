@@ -4,6 +4,14 @@ import { SignupComponent } from './signup.component';
 import { By } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule, AbstractControl } from '@angular/forms';
 import { strict } from 'assert';
+import { AuthService } from '../services/auth.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+import { userDetails } from '../interfaces';
+
+class MockAuthService {
+  public createAccount(userDetails: userDetails) {}
+}
 
 
 fdescribe('SignupComponent', () => {
@@ -14,13 +22,21 @@ fdescribe('SignupComponent', () => {
   let email: AbstractControl;
   let password: AbstractControl;
   let signUpButton: HTMLButtonElement;
+  let creatAccountSpy: jasmine.Spy;
+  let authService: AuthService
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SignupComponent ],
-      imports: [FormsModule, ReactiveFormsModule]
+      imports: [FormsModule, ReactiveFormsModule],
+      providers: [{provide: AuthService, useClass: MockAuthService}, HttpClientTestingModule, HttpClient]
     })
     .compileComponents();
+
+    authService = TestBed.get(AuthService);
+    
+
+    creatAccountSpy = spyOn(authService, 'createAccount');
   }));
 
   beforeEach(() => {
@@ -67,7 +83,7 @@ fdescribe('SignupComponent', () => {
     firstName.setValue('rtty');
     lastName.setValue('rtty');
     email.setValue('rt@gmail.com');
-    password.setValue('e1_rurt78yyh');
+    password.setValue('e1@Rurt78yyh');
 
     fixture.detectChanges()
     expect(firstName.valid).toBeTruthy();
@@ -77,15 +93,23 @@ fdescribe('SignupComponent', () => {
     expect(signUpButton.disabled).toBeFalsy();
   });
 
-  xit('should call onSubmit method if user cliks signup', ()=> {
+  it('should call onSubmit method if user cliks signup', ()=> {
+    const mockUserDetails: userDetails = {
+      firstName: 'rtty',
+      lastName: 'yui',
+      email: 'rt@gmail.com',
+      password: 'e1@rUrt78yyh'
+    }
     firstName.setValue('rtty');
+    lastName.setValue('yui');
     email.setValue('rt@gmail.com');
-    password.setValue('e1_rurt78yyh');
+    password.setValue('e1@rUrt78yyh');
     fixture.detectChanges()
     
     signUpButton.click();
     fixture.detectChanges();
-    expect(component.onSubmit).toHaveBeenCalledTimes(1);
+    expect(creatAccountSpy).toHaveBeenCalledTimes(1);
+    expect(creatAccountSpy.calls.all()[0].args[0]).toEqual(mockUserDetails);
   });
 
   it('should disable signup if form is not valid', ()=> {
