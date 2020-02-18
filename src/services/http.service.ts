@@ -8,6 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HttpService {
+  // TODO: load from env
   private REST_API_SERVER = 'https://api.github.com';
   // private REST_API_SERVER = "http://localhost:3000";
 
