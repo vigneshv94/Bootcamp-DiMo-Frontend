@@ -41,7 +41,6 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formControlValue('name'), this.formControlValue('email'), this.formControlValue('password'))
- 
   }
 
 }
