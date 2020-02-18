@@ -11,7 +11,10 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup
   constructor() { 
     this.signupForm = new FormGroup({
-      name: new FormControl('', [
+      firstName: new FormControl('', [
+        Validators.minLength(3)
+      ]),
+      lastName: new FormControl('', [
         Validators.minLength(3)
       ]),
       email: new FormControl('', [
@@ -23,8 +26,12 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  get name() {
-    return this.signupForm.get('name');
+  get firstName() {
+    return this.signupForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.signupForm.get('lastName');
   }
 
   get email() {
