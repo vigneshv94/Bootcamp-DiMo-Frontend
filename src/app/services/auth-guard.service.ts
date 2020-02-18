@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 })
 export class AuthGuardService implements CanActivate {
   isValidUser: boolean;
+  
   constructor(
     private authService: AuthService,
     private router: Router
