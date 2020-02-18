@@ -13,6 +13,7 @@ import { AttachAuthTokenInterceptor } from 'src/interceptors/attach-auth-token.i
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 // import { LoginFormComponent } from './login-form/login-form.component';
+import { BrowserStorage } from './services/browserStorage.service';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
+    // LoginFormComponent
   ],
   imports: [
-    BrowserModule, 
-    AppRoutingModule, 
+    BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
@@ -35,7 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       useClass: AttachAuthTokenInterceptor,
       multi: true
     },
-    AuthService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

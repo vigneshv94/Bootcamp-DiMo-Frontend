@@ -5,11 +5,12 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  
   public validUser: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  constructor() { }
+  constructor() {}
 
   public getValidUser(email: string, password: string): boolean {
-    return true
+    return true;
   }
+
+  public validateUser(email: string, password: string): any {}
 }
