@@ -9,6 +9,8 @@ import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthService } from './services/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
+// import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,13 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    // LoginFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService
