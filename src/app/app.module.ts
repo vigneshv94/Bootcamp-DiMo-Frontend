@@ -24,7 +24,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     PageNotFoundComponent,
     // LoginFormComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule, 
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
