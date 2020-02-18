@@ -6,7 +6,7 @@
         Name
       </label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="name" formControlName="name" type="text" placeholder="Name">
-      <div *ngIf="name.invalid && (name.dirty && name.touched)" class="text-error bg-grey-400"> Name must be minimum 3 characters</div>
+      <div *ngIf="name.invalid && (name.dirty && name.touched)" class="text-error bg-grey-400" id="namewarning"> Name must be minimum 3 characters</div>
     </div>
     <div class="mb-6">
       <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
@@ -23,7 +23,7 @@
       <div *ngIf="password.invalid && (password.dirty && password.touched)" class="text-error bg-grey-400">Password must be 7 to 15 characters, numeric digits, underscore and first character must be a letter</div>
     </div>
     <div class="flex items-center justify-between">
-      <button class="bg-blue hover:bg-blue-dark text-blue font-bold py-2 px-4 rounded" type="submit" >
+      <button [disabled]="!signupForm.valid" class="bg-blue hover:bg-blue-dark text-blue font-bold py-2 px-4 rounded" type="submit" >
         Sign Up
       </button>
       <a class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" routerLink="/login">
