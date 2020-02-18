@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { userDetails } from '../interfaces';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
 
   signupForm: FormGroup
-  constructor() { 
+  constructor(private authService: AuthService) { 
     this.signupForm = new FormGroup({
       firstName: new FormControl('', [
         Validators.minLength(3)
@@ -18,9 +20,9 @@ export class SignupComponent implements OnInit {
         Validators.minLength(3)
       ]),
       email: new FormControl('', [
-        Validators.email
+        Validators.pattern(/^[_A-Za-z0-9-\\\\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/)
       ]),
-      password: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z]\w{7,14}$/)])
+      password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,15}$/)])
     })
   }
 
@@ -47,7 +49,13 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formControlValue('name'), this.formControlValue('email'), this.formControlValue('password'))
+    let details: userDetails = {
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      email: this.email.value,
+      password: this.password.value
+    }
+    this.authService.createAccount(details);
   }
 
 }

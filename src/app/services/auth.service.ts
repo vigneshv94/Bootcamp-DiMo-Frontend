@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpService } from './http.service';
+import { userDetails } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +9,13 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   
   public validUser: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  constructor() { }
+  constructor(httpService: HttpService) { }
 
   public getValidUser(email: string, password: string): boolean {
     return true
+  }
+
+  public createAccount(payload: userDetails) {
+    
   }
 }

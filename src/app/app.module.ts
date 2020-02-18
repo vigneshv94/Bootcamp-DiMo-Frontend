@@ -12,6 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AttachAuthTokenInterceptor } from 'src/interceptors/attach-auth-token.interceptor';
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpService } from './services/http.service';
 // import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       multi: true
     },
     AuthService,
+    HttpService
   ],
   bootstrap: [AppComponent]
 })
