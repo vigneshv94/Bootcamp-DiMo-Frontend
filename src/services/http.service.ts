@@ -5,10 +5,10 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class HttpService {
-  private REST_API_SERVER = "https://api.github.com";
+  private REST_API_SERVER = 'https://api.github.com';
   // private REST_API_SERVER = "http://localhost:3000";
 
   constructor(private httpClient: HttpClient) {}
