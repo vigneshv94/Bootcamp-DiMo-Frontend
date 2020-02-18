@@ -9,7 +9,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class HttpService {
   // TODO: load from env
-  private REST_API_SERVER = 'https://dimo-services.herokuapp.com';
+  private REST_API_SERVER = 'https://dimo-wildwolves.herokuapp.com';
   // private REST_API_SERVER = "http://localhost:3000";
 
   constructor(private httpClient: HttpClient) {}
