@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpService } from './services/http.service';
 // import { LoginFormComponent } from './login-form/login-form.component';
+import { BrowserStorage } from './services/browserStorage.service';
 
 @NgModule({
   declarations: [
@@ -22,11 +23,12 @@ import { HttpService } from './services/http.service';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
+    // LoginFormComponent
   ],
   imports: [
-    BrowserModule, 
-    AppRoutingModule, 
+    BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
