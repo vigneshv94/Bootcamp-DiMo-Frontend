@@ -1,7 +1,7 @@
 {
   "name": "movie-bash",
   "version": "0.0.0",
-   "scripts": {
+  "scripts": {
     "ng": "ng",
     "build": "ng build",
     "test": "ng test",
@@ -11,8 +11,7 @@
     "post-install": "ng build --aot --prod",
     "start": "node server.js",
     "postinstall": "ng build --aot --prod"
-  }
-  ,
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.1",
